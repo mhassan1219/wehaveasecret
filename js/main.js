@@ -18,6 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
         cursor.toggleClass('hidden');
     }
 
+    function fadeText() {
+        text.text(this.text);
+        text.addClass('fade-in');
+    }
+    function fadeoutText() {
+        text.text(this.text);
+        text.addClass('fade-out');
+        setTimeout(function() {
+          text.text('');
+          text.removeClass('fade-out');
+        }, 1000);
+      }      
+
     function writeText(i) {
         text.text(this.text.slice(0, i + 1));
     }
@@ -25,14 +38,25 @@ document.addEventListener("DOMContentLoaded", function () {
     function clearText() {
         text.text('');
     }
-
+    
     BLINK_STEP = {
         delay: CURSOR_BLINK,
         times: 4,
         method: blinkCursor
     };
 
+
     steps1 = [
+        {
+            delay: TEXT_SPEED,
+            text: "From Reeda and Mohsin, with love...",
+            method: fadeText,
+        },
+        {
+            delay: 10,
+            text: "From Reeda and Mohsin, with love...",
+            method: fadeoutText,
+        },
         BLINK_STEP,
         {
             delay: TEXT_SPEED,
@@ -98,6 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 totalTime += step.delay;
                 setTimeout(step.method.bind(step, i), totalTime);
             }
+        }
+        if (step.method === fadeoutText) {
+            totalTime += 1000;
         }
     }
 
