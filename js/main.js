@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         BLINK_STEP,
         {
             delay: TEXT_SPEED,
-            text: "but Mommy and Daddy want everyone to be suprised when I am born... including themselves.",
+            text: "but Mommy and Daddy want everyone to be surprised when I am born... including themselves.",
             method: writeText,
         },
         BLINK_STEP,
